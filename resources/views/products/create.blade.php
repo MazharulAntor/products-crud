@@ -8,6 +8,17 @@
                     <h1>Add Product</h1>
                     <button>Save</button>
                 </div>
+                @if ($errors->any())
+                    <div>
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>
+                                    {{ $error }}
+                                </li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
                 <div class="card">
                     <div>
                         <label>Name</label>
@@ -22,7 +33,7 @@
                         <label>Category</label>
                         <select name="category">
                             @foreach (json_decode('{"Smartphone":"Smartphone","Smart TV":"Smart TV", "Computer":"Computer"}', true) as $optionKey => $optionValue)
-                            <option value="{{ $optionKey }}">{{ $optionValue }}</option>
+                                <option value="{{ $optionKey }}">{{ $optionValue }}</option>
                             @endforeach
                         </select>
                         <hr>
